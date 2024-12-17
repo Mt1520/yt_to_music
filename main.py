@@ -42,6 +42,8 @@ def main():
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
+    print("testing git")
+
 
 
 main()
