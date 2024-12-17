@@ -13,7 +13,8 @@ def sanitize_filename(filename):
 def main():
     print("Enter the URL of the playlist you want to download: ")
     url = input()
-    download_path = "D:\mtrih\Music"
+    print("Enter the path to where you want to save the music (e.g: 'D:\user\Music') : ")
+    download_path = input()
     ydl_opts = {
         'format': 'bestaudio/best',
         'ffmpeg_location': 'C:/ffmpeg-2024-12-16-git-d2096679d5-essentials_build/bin',
@@ -43,8 +44,6 @@ def main():
             ydl.download([url])
 
     print("testing git")
-
-
 
 main()
 
