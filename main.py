@@ -35,7 +35,7 @@ def main():
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'outtmpl': f'{download_path}/%(title)s.%(ext)s',
+        'outtmpl': f'{download_path}/{playlist_title}/%(title)s.%(ext)s',
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -44,7 +44,7 @@ def main():
         #create folder with playlist title if it doesn't exist, overwrite if it does
         os.makedirs(f'{download_path}/{playlist_title}', exist_ok=True)
         #change download path to the new folder
-        ydl_opts['outtmpl'] = f'{download_path}/{playlist_title}/%(title)s.%(ext)s'
+        # ydl_opts['outtmpl'] = f'{download_path}/{playlist_title}/%(title)s.%(ext)s'
 
         ydl.download([url])
 
