@@ -1,0 +1,41 @@
+[33mcommit 403c4fada443b59c30dca4e3088c21a91ee4cb2a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 22:06:22 2024 +0000
+
+    error with saving to correct directory
+
+[33mcommit 2f0360a0e58371a98e10648e6855f1f52690ed2d[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 22:02:36 2024 +0000
+
+    error finding playlist title was fixed
+
+[33mcommit e27e27e0d931c67c4e7f2cacdbe973f7e37626b5[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 21:56:41 2024 +0000
+
+    adjusted to handle playlist and not videos
+
+[33mcommit fcf775e9901e9199bb802e276381b7e0534db107[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 21:47:31 2024 +0000
+
+    couldn't find ffmpeg in path so manually added it
+
+[33mcommit ef293f448a47b4e39e7137f9c8d908fe031a17ec[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 21:39:54 2024 +0000
+
+    Switched to yt-dlp from pytube
+
+[33mcommit 70c9ea673b3c00d28f83c946af4cb3a0563a8238[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 21:36:04 2024 +0000
+
+    debugging: trying with single videos
+
+[33mcommit 3cdabcbbacd16e8bb2bd25e95ff388ba32166264[m
+Author: Mostafa <mt1520@ic.ac.uk>
+Date:   Tue Dec 17 21:35:13 2024 +0000
+
+    Initial implementation of code, getting errors downloading playlists

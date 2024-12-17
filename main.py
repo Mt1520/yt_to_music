@@ -4,29 +4,16 @@ from pytube.cli import on_progress
 import os
 import sys
 import yt_dlp
+import re
+
+def sanitize_filename(filename):
+    return re.sub(r'[<>:"/\\|?*]', '', filename)
 
 
 def main():
-    print("Enter the URL of the video you want to download: ")
+    print("Enter the URL of the playlist you want to download: ")
     url = input()
-    # playlist = Playlist(url)
-    download_path = "D:/mtrih/Music"
-    # i = 0
-
-    # for video in playlist.videos:
-    #     # video_title = video.title if video.title else "default_title" + i
-    #     # video.register_on_progress_callback(on_progress)
-    #     video.streams.filter(only_audio=True).first().download(output_path=download_path)
-    #     i+=1
-    # print ("Downloaded all videos in the playlist")
-
-    # video = YouTube(url)
-    # download_path = "D:/mtrih/Music"
-    # video.streams.filter(only_audio=True).first().download(output_path=download_path)
-    # print("Downloaded the video")
-
-################################ switching to yt-dlp ################################
-
+    download_path = "D:\mtrih\Music"
     ydl_opts = {
         'format': 'bestaudio/best',
         'ffmpeg_location': 'C:/ffmpeg-2024-12-16-git-d2096679d5-essentials_build/bin',
@@ -35,18 +22,25 @@ def main():
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'outtmpl': f'{download_path}/{playlist_title}/%(title)s.%(ext)s',
+        'outtmpl': {'default': os.path.join(download_path, '%(title)s.%(ext)s')},
     }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        #get playlist title
-        playlist_title = ydl.extract_info(url, download=False)['title']
-        #create folder with playlist title if it doesn't exist, overwrite if it does
-        os.makedirs(f'{download_path}/{playlist_title}', exist_ok=True)
-        #change download path to the new folder
-        # ydl_opts['outtmpl'] = f'{download_path}/{playlist_title}/%(title)s.%(ext)s'
+    if "playlist" in url:
+        
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            #get playlist title
+            playlist_title = ydl.extract_info(url, download=False)['title']
+            playlist_title = sanitize_filename(playlist_title)
+            #create folder with playlist title if it doesn't exist, overwrite if it does
+            os.makedirs(f'{download_path}/{playlist_title}', exist_ok=True)
+            #change download path to the new folder
+            playlist_folder = os.path.join(download_path, playlist_title)
+            ydl_opts['outtmpl'] = {'default': os.path.join(playlist_folder, '%(title)s.%(ext)s')}
+            ydl.download([url])
 
-        ydl.download([url])
+    else:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
 
     print("Downloaded the playlist")
 
