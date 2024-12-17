@@ -29,6 +29,7 @@ def main():
 
     ydl_opts = {
         'format': 'bestaudio/best',
+        'ffmpeg_location': 'C:/ffmpeg-2024-12-16-git-d2096679d5-essentials_build/bin',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -38,9 +39,16 @@ def main():
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        #get playlist title
+        playlist_title = ydl.playlist_title(url)
+        #create folder with playlist title if it doesn't exist, overwrite if it does
+        os.makedirs(f'{download_path}/{playlist_title}', exist_ok=True)
+        #change download path to the new folder
+        ydl_opts['outtmpl'] = f'{download_path}/{playlist_title}/%(title)s.%(ext)s'
+
         ydl.download([url])
 
-    print("Downloaded the video")
+    print("Downloaded the playlist")
 
 
 
