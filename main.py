@@ -40,7 +40,7 @@ def main():
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         #get playlist title
-        playlist_title = ydl.playlist_title(url)
+        playlist_title = ydl.extract_info(url, download=False)['title']
         #create folder with playlist title if it doesn't exist, overwrite if it does
         os.makedirs(f'{download_path}/{playlist_title}', exist_ok=True)
         #change download path to the new folder
