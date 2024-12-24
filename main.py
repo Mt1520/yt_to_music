@@ -13,7 +13,7 @@ def sanitize_filename(filename):
 def main():
     print("Enter the URL of the playlist you want to download: ")
     url = input()
-    print("Enter the path to where you want to save the music (e.g: 'D:\user\Music') : ")
+    print("Enter the path to where you want to save the music : ")
     download_path = input()
     ydl_opts = {
         'format': 'bestaudio/best',
