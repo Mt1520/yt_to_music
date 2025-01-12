@@ -2,6 +2,12 @@
 
 `yt-to-music` is a Python-based tool that allows users to download audio from YouTube videos and playlists and save them in a specified directory. The tool uses `yt-dlp`, a powerful and flexible tool to download content from YouTube, and supports downloading both individual videos and whole playlists.
 
+## Demo:
+
+https://github.com/user-attachments/assets/0b59e763-84bd-4953-b6bc-71108d89f23c
+
+
+
 ## Features
 
 - Download audio from YouTube videos.
